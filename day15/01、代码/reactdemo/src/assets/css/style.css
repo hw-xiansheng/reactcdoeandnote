@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body{
+    padding: 30px;
+}
+.cotbox{
+    display: flex;
+}
+.box{
+    width: 400px;
+    height: 400px;
+}
+.abox{
+    border:2px solid blue;
+}
+.bbox{
+    border:2px solid green;
+}

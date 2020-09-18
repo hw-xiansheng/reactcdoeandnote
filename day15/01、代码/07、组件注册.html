@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07、组件注册</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .item{
+            width: 340px;
+            border:2px solid blue;
+            display: inline-block;
+        }
+        .item h3{
+            line-height: 40px;
+            background-color:orange;
+            padding: 0 10px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+        .item img{
+            height: 100px;
+            width: 100%;
+            display: block;
+            background-color: #eee;
+            margin-bottom: 20px;
+        }
+        .item li{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script type="text/babel">
+console.log(React);
+
+    // 注册组件！
+        // 分类：
+            // 构造函数式组件！
+            /*
+                function 组件名(){
+                    return JSX
+                }
+                let 组件名 = ()=>(JSX)
+            */
+            // 类组件！
+            /*
+                class 组件名 extends React.Component{
+                    render(){
+                        return JSX
+                    }
+                }
+            */
+        // 要求：
+            // 组件名首字母大写！  
+
+
+    function Box(){
+        return (<div className="item">
+                    <h3>
+                        <span>标题</span>
+                        <a href="">更多</a>
+                    </h3>
+                    <div className="content">
+                        <p>这是一个段落</p>
+                    </div>
+                </div>)
+    }
+    let Kaixin = ()=> (<div className="kaixin">
+                            <h3 className='tit'>
+                            我是开心组件！
+                            </h3>
+                            <p>我是开心组件的内容！</p>
+                        </div>)
+
+    class Banner extends React.Component{
+        render(){
+            return (<div className='banner'>
+                        <h1>我是Banner啊！</h1>
+                        <p>我是Banner啊啊啊！</p>
+                        <Kaixin/>
+                    </div>)
+        }
+    }
+
+    function App(){
+        return (<div id="box">
+                    <h1>你好！！！</h1>
+                    <Box />
+                    <Banner />
+                </div>)
+    }
+    // 渲染是一个组件！ 理解为根组件！
+    ReactDOM.render(<App />,document.getElementById("app"))
+</script>
+</html>

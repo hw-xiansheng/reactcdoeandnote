@@ -1,0 +1,23 @@
+.item{
+    width: 340px;
+    border:2px solid blue;
+    display: inline-block;
+}
+.item h3{
+    line-height: 40px;
+    background-color:orange;
+    padding: 0 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.item img{
+    height: 100px;
+    width: 100%;
+    display: block;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+.item li{
+    margin-left: 30px;
+}

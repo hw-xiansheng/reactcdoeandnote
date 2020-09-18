@@ -469,10 +469,715 @@
   </html>
   ```
 
-
-
 ### 2.6、组件的注册
 
+- 组件的分类
+
+  - 函数式组件
+
+    ```jsx
+    function 组件名(){
+    	return JSX
+    }
+    let 组件名 = ()=>(JSX)
+    ```
+
+  - 类组件
+
+    ```jsx
+    class 组件名 extends React.Component{
+      render(){
+      		return JSX
+      }
+    }
+    ```
+
+  - 组件注意：
+
+    - 组件名首字母大写！  
+    - 组件只能有一个根标签！
+
+  - 组件的使用
+
+    ```html
+    <组件名/>
+    ```
+
+  - 代码
+
+    ```jsx
+    	function Box(){
+            return (<div className="item">
+                        <h3>
+                            <span>标题</span>
+                            <a href="">更多</a>
+                        </h3>
+                        <div className="content">
+                            <p>这是一个段落</p>
+                        </div>
+                    </div>)
+        }
+        let Kaixin = ()=> (<div className="kaixin">
+                                <h3 className='tit'>
+                                我是开心组件！
+                                </h3>
+                                <p>我是开心组件的内容！</p>
+                            </div>)
+    
+        class Banner extends React.Component{
+            render(){
+                return (<div className='banner'>
+                            <h1>我是Banner啊！</h1>
+                            <p>我是Banner啊啊啊！</p>
+                            <Kaixin/>
+                        </div>)
+            }
+        }
+    
+        let vdom = (<div id="box">
+                        <h1>你好！！！</h1>
+                        <Box/>
+                        <Banner/>
+                    </div>)
+        ReactDOM.render(vdom,document.getElementById("app"))
+    ```
+
+    
+
+## 3、脚手架
+
+### 3.1、安装脚手架
+
+- 脚手架名称：create-react-app 
+
+- 脚手架官方文档：
+
+  - 英文文档：https://create-react-app.dev/
+  - 中文文档：https://www.html.cn/create-react-app/docs/getting-started/
+
+- 安装脚手架：
+
+  ```js
+  npm  i  create-react-app  -g    // 全局安装
+  cnpm i  create-react-app  -g 
+  ```
+
+- 检测是否安装成功
+
+  ```js
+  create-react-app -V    // 显示版本号说明安装成功
+  ```
 
 
-## 3、react脚手架
+
+### 3.2、初始化项目
+
+- npx直接初始化项目，不需要安装脚手架
+
+  ```
+  npx create-react-app  项目名称
+  ```
+
+- 脚手架初始项目命令
+
+  - 找到项目存放的目录位置，进入该位置的cmd窗口
+
+  - 执行初始化命令
+
+    ```js
+    create-react-app 项目名称   // 初始化项目   默认是使用的yarn下载包依赖，如果没有yarn则自动使用npm
+    ```
+
+- 启动项目
+
+  - 进入项目目录
+
+    ```
+    cd 项目名称
+    ```
+
+  - 启动项目
+
+    ```js
+    npm start   
+    // 如果安装了yarn可以执行
+    yarn start
+    ```
+
+- **题外知识(了解即可！)**
+
+  - yarn的安装  【yarn是一个包管理工具，和npm一样！】
+
+    - 文档地址：https://yarn.bootcss.com/docs/install/#windows-stable
+
+    - 安装yarn
+
+      ```js
+      cnpm i yarn -g    // 全局安装yarn
+      npm i yarn -g
+      ```
+
+    - 检测安装是否成功
+
+      ```js
+      yarn -version   // 输出版本号说明安装成功
+      ```
+
+  - yarn的常用指令
+
+    ```js
+    yarn init   // 初始化项目  类似于 npm init
+    yarn add 包名     // 安装一个包   类于  npm install  包名
+    yarn upgrade 包名     // 更新一个包   类于  npm update  包名
+    yarn remove  包名   // 删除某个包    类似于  npm uninstall 包名
+    
+    // 安装项目所有依赖，自动读取项目下面的package.json文件去下载所有依赖包，类似于  npm i
+    yarn 
+    或者
+    yarn install      
+    
+    ```
+
+  - yarn比npm快，但是第一次是一样的，因为yarn他会吧下载过的包缓存起来，下次再下载就会很快！而npm是每次都会重新下载！
+
+### 3.3、目录结构
+
+![](/Users/hewu/Desktop/02、笔记/ml.png)
+
+```js
+reactdemo
+|==	git 			 			//文件夹  不用管，是版本管理文件夹
+|== gitignore  		  //文件    不用管， 是版本管理时候忽略的文件
+|== node_modules 		//文件夹  项目依赖包文件夹
+|== package.json    //文件	  包说明文件
+|== public  				//文件夹   静态文件夹，类似于Vue-cli 项目里面的static
+|==|== favicon.ico  			// 网页图标  不用管，
+|==|== index.html				  // 单页面应用的单页面
+|==|== manifest.json      // 缓存配置  不用管，
+|==|== robots.txt         // 目录抓取  不用管，
+|== README.md       // 说明文件，不用管
+|== src 			    	//文件夹 【 开发目录！】
+|==|== App.css      //文件	  根组件样式	（(可以不要，自己写)
+|==|== App.js       //文件	  根组件		  （可以自己写）
+|==|== App.test.js  //文件	  测试文件    (不用管,可删除)
+|==|== index.css    //文件    全局样式文件 (可以不要，自己写)
+|==|== index.js     // 项目入口文件，类似于Vue-cli 里面的main.js  【非常重要！】
+|==|== serviceWorker// 服务测试文件		(不用管,可删除)
+|==|== setupTests.js// 服务测试文件   (不用管,可删除)
+```
+
+### 3.4、文件解释
+
+- index.js   入口文件
+
+  ```js
+  import React from 'react';  // 引入react
+  import ReactDOM from 'react-dom';   // 引入react-dom 
+  import './index.css';    //  全局的css文件
+  import App from './App';  // 导入根组件
+  import * as serviceWorker from './serviceWorker';   // 离线测试 
+  
+  // 渲染根组件到react实例上面！
+  ReactDOM.render(<App /> ,document.getElementById('root'));
+  
+  // If you want your app to work offline and load faster, you can change
+  // unregister() to register() below. Note this comes with some pitfalls.
+  // Learn more about service workers: https://bit.ly/CRA-PWA
+  serviceWorker.unregister();  // 离线测试 
+  
+  ```
+
+- App.js   根组件
+
+  ```js
+  import React from 'react';
+  import logo from './logo.svg';  // 导入一张svg图
+  import './App.css';             // 导入app.css样式
+  
+  // 函数式创建一个App组件！
+  function App() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
+  // 暴露组件
+  export default App;
+  ```
+
+### 3.5、注意点
+
+- 引入css文件
+
+  ```js
+  // 把css作为一个模块引入
+  import "css的路径"
+  ```
+
+- 引入本地图片
+
+  - 使用import作为模块导入
+
+    ```js
+    import  变量  from "图片的路径"
+    <img src={ 变量 } />
+    ```
+
+  - 使用require引入
+
+    ```html
+    <img src={ require("图片路径") } />
+    ```
+
+  - 外链的网络图片没有问题
+
+- 代码
+
+  ```js
+  import React, { Component } from 'react';
+  
+  // 导入css文件
+  import "./assets/css/app.css"
+  
+  // 图片引入解决
+  // 方式1：
+  import pq from "./assets/img/pq.jpg";
+  
+  class App extends Component {
+      render() {
+          return (
+              <div className='app'>
+                  我是根组件啊！
+                  {/* 不能按照相对路径去引入本地图片！ */}
+                  {/* <img src="../assets/img/pq.jpg" /> */}
+                  {/* 方式1 */}
+                  <img src={pq} />
+                  {/* 方式2 */}
+                  <img src={ require("./assets/img/pq.jpg") } />
+                  {/* 外链图片没有问题 */}
+                  <img src="http://t9.baidu.com/it/u=3363001160,1163944807&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1587697249&t=41b2a517a6eaf2499b50f036fc225936" />
+              </div>
+          );
+      }
+  }
+  
+  // 暴露
+  export default App;
+  ```
+
+- **所有的import语句必须放在最上面**，写完了import语句之后才可以写 常规JS代码。
+
+
+
+## 4、事件绑定
+
+### 4.1、事件绑定
+
+- **方式1**
+
+  ```js
+  class Box extends Component {
+      fn1(){
+          alert("事件绑定1")
+      }
+      render() {
+          return (
+              <div className="box">
+                  <button onClick={this.fn1 }>事件绑定1</button>
+              </div>
+          );
+      }
+  }
+  ```
+
+  **这种方式绑定事件，事件函数里面的this是undefined。**
+
+  **不能加括号，加了就是直接调用，所以不能传参**
+
+  
+
+- **方式2**
+
+  在绑定的时候加上bind实现this的固定。
+
+  ```js
+  <标签 onClick="this.事件函数名.bind(this)" />
+  ```
+
+  ```js
+  import React, { Component } from 'react';
+  
+  class Box extends Component {
+      constructor(){
+          super()
+      }
+      fn1(){
+          alert("事件绑定1")
+          console.log(this)
+      }
+      fn2(){
+          alert("事件绑定2")
+          console.log(this)
+      }
+      render() {
+          return (
+              <div className="box">
+                  <button onClick={this.fn1}>事件绑定1</button>
+                  {/* 固定this的指向 */}
+                  <button onClick={this.fn2.bind(this)}>事件绑定2</button>
+              </div>
+          );
+      }
+  }
+  
+  export default Box;
+  
+  
+  // function 函数名(){}   
+  // let 函数名 = function(){}     
+  // new Function()    
+  
+  ```
+
+- **方式3**
+
+  **在构造器里面就定义好事件函数的this绑定**
+
+  ```js
+  import React, { Component } from 'react';
+  
+  class Box extends Component {
+      constructor(){
+          super()
+          this.fn3 = this.fn3.bind(this)
+      }
+      fn1(){
+          alert("事件绑定1")
+          console.log(this)
+      }
+      fn2(){
+          alert("事件绑定2")
+          console.log(this)
+      }
+      fn3() {
+          alert("事件绑定3")
+          console.log(this)
+      }
+      render() {
+          return (
+              <div className="box">
+                  <button onClick={this.fn1}>事件绑定1</button>
+                  {/* 固定this的指向 */}
+                  <button onClick={this.fn2.bind(this)}>事件绑定2</button>
+                  <button onClick={this.fn3}>事件绑定3</button>
+              </div>
+          );
+      }
+  }
+  
+  export default Box;
+  
+  
+  // function 函数名(){}   
+  // let 函数名 = function(){}     
+  // new Function()    
+  
+  ```
+
+
+
+- **方式4** 
+
+  定义事件函数的就是用箭头函数从而实现this的固定。
+
+  ```js
+  import React, { Component } from 'react';
+  
+  class Box extends Component {
+      constructor(){
+          super()
+          this.fn3 = this.fn3.bind(this)
+      }
+      fn1(){
+          alert("事件绑定1")
+          console.log(this)
+      }
+      fn2(){
+          alert("事件绑定2")
+          console.log(this)
+      }
+      fn3() {
+          alert("事件绑定3")
+          console.log(this)
+      }
+      fn4 = ()=>{
+          alert("事件绑定4")
+          console.log(this)
+      }
+      render() {
+          return (
+              <div className="box">
+                  <button onClick={this.fn1}>事件绑定1</button>
+                  {/* 固定this的指向 */}
+                  <button onClick={this.fn2.bind(this)}>事件绑定2</button>
+                  <button onClick={this.fn3}>事件绑定3</button>
+                  <button onClick={this.fn4}>事件绑定4</button>
+              </div>
+          );
+      }
+  }
+  
+  export default Box;
+  
+  
+  // function 函数名(){}   
+  // let 函数名 = function(){}     
+  // new Function()    
+  
+  ```
+
+- 方式5
+
+  间接操作：   **在模板上事件绑定的是一个箭头函数，箭头函数里面 执行的我们类里面的事件函数**
+
+  ```js
+  import React, { Component } from 'react';
+  
+  class Box extends Component {
+      constructor(){
+          super()
+          this.fn3 = this.fn3.bind(this)
+      }
+      fn1(){
+          alert("事件绑定1")
+          console.log(this)
+      }
+      fn2(){
+          alert("事件绑定2")
+          console.log(this)
+      }
+      fn3() {
+          alert("事件绑定3")
+          console.log(this)
+      }
+      fn4 = ()=>{
+          alert("事件绑定4")
+          console.log(this)
+      }
+      fn5(){
+          alert("事件绑定5")
+          console.log(this)
+      }
+      render() {
+          return (
+              <div className="box">
+                  <button onClick={this.fn1}>事件绑定1</button>
+                  {/* 固定this的指向 */}
+                  <button onClick={this.fn2.bind(this)}>事件绑定2</button>
+                  <button onClick={this.fn3}>事件绑定3</button>
+                  <button onClick={this.fn4}>事件绑定4</button>
+                  {/* <button onClick={() => { console.log(1111) }}>事件绑定5</button> */}
+                  <button onClick={() => { this.fn5()  } }>事件绑定5</button>
+              </div>
+          );
+      }
+  }
+  
+  export default Box;
+  
+  
+  // function 函数名(){}   
+  // let 函数名 = function(){}     
+  // new Function()    
+  
+  ```
+
+  
+
+### 4.2、事件传参
+
+```js
+import React, { Component } from 'react';
+
+class BoxTwo extends Component {
+    constructor(){
+        super()
+        this.fn3 = this.fn3.bind(this)
+    }
+    fn1(){
+        alert("事件绑定1")
+        console.log(this)
+    }
+    fn2(val){  // 可以传参！！！！
+        alert(val)
+        console.log(this)
+    }
+    fn3() {
+        alert("事件绑定3")
+        console.log(this)
+    }
+    fn4 = ()=>{
+        alert("事件绑定4")
+        console.log(this)
+    }
+    fn5(val){
+        alert(val)
+        console.log(this)
+    }
+    render() {
+        return (
+            <div className="box">
+                <button onClick={this.fn1}>事件绑定1===不能传！</button>
+                {/* 固定this的指向 */}
+                <button onClick={this.fn2.bind(this,2222)}>事件绑定2</button>
+                <button onClick={this.fn3}>事件绑定3===不能传！</button>
+                <button onClick={this.fn4}>事件绑定4===不能传！</button>
+                {/* <button onClick={() => { console.log(1111) }}>事件绑定5</button> */}
+                <button onClick={() => { this.fn5(2000)  } }>事件绑定5</button>
+            </div>
+        );
+    }
+}
+
+export default BoxTwo;
+
+// 模板里面使用bind 和  模板里面使用箭头函数  绑定事件可以传参！  这两种事件绑定使用最多！
+```
+
+
+
+### 4.3、事件对象
+
+```js
+import React, { Component } from 'react';
+
+class BoxThree extends Component {
+    constructor() {
+        super()
+        this.fn3 = this.fn3.bind(this)
+    }
+    fn1(e) {
+        console.log(e.target)
+        alert("事件绑定1")
+        console.log(this)
+    }
+    fn2(e) {
+        console.log(e.target)
+        alert("事件绑定2")
+        console.log(this)
+    }
+    fn3(e) {
+        console.log(e.target)
+        alert("事件绑定3")
+        console.log(this)
+    }
+    fn4 = (e) => {
+        console.log(e.target)
+        alert("事件绑定4")
+        console.log(this)
+    }
+    fn5(e) {
+        alert("事件绑定5")
+        console.log(this)
+    }
+    render() {
+        return (
+            <div className="box">
+                <button onClick={this.fn1}>事件绑定1</button>
+                {/* 固定this的指向 */}
+                <button onClick={this.fn2.bind(this)}>事件绑定2</button>
+                <button onClick={this.fn3}>事件绑定3</button>
+                <button onClick={this.fn4}>事件绑定4</button>
+                {/* <button onClick={() => { console.log(1111) }}>事件绑定5</button> */}
+                <button  onClick={(ev) => { this.fn5(ev)  }}>事件绑定5</button>
+            </div>
+        );
+    }
+}
+
+export default BoxThree;
+
+
+// function 函数名(){}   
+// let 函数名 = function(){}     
+// new Function()    
+
+```
+
+
+
+### 4.4、既要传参又要获取事件对象
+
+```js
+import React, { Component } from 'react';
+
+class BoxFour extends Component {
+    constructor() {
+        super()
+        this.fn3 = this.fn3.bind(this)
+    }
+    fn1() {
+        alert("事件绑定1")
+        console.log(this)
+    }
+    fn2(val,e) {  // 可以传参！！！！
+        // 如果既要传参又要获取事件对象，那么形参位置的最后一位就是事件对象！
+        console.log(e.target)
+        alert(val)
+        console.log(this)
+    }
+    fn3() {
+        alert("事件绑定3")
+        console.log(this)
+    }
+    fn4 = () => {
+        alert("事件绑定4")
+        console.log(this)
+    }
+    fn5(e,num) {
+        console.log(e.target)
+        console.log(num)
+        console.log(this)
+    }
+    render() {
+        return (
+            <div className="box">
+                <button onClick={this.fn1}>事件绑定1===不能传！</button>
+                {/* 固定this的指向 */}
+                <button onClick={this.fn2.bind(this,2222)}>事件绑定2</button>
+                <button onClick={this.fn3}>事件绑定3===不能传！</button>
+                <button onClick={this.fn4}>事件绑定4===不能传！</button>
+                {/* <button onClick={() => { console.log(1111) }}>事件绑定5</button> */}
+                <button onClick={(ev) => { this.fn5(ev,200) }}>事件绑定5</button>
+            </div>
+        );
+    }
+}
+
+export default BoxFour;
+
+// 模板里面使用bind 和  模板里面使用箭头函数  
+    // 绑定事件可以传参且可以同时获取事件对象！  这两种事件绑定使用最多！
+
+```
+
+
+
+
+
+
+
