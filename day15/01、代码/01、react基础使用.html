@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01、react基础使用</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+</head>
+<body>
+    <!-- 3、挂载的节点 -->
+    <div id="app">
+        <!-- <div id="box">
+            <h3 class="title">中原一点红！</h3>
+            <p>我是第一段话的内容！</p>
+            <p>我是话的内容!</p>
+        </div> -->
+    </div>
+</body>
+<script>
+
+    console.log(React)
+    console.log(ReactDOM)
+
+    // 创建React元素！创建一个虚拟DOM
+    // React.createElement(标签名、标签属性、子元素)
+    // let vdom = React.createElement('div',{id:'box',title:'我是divbox'},'我是div哦！！！')
+    // console.log(vdom)
+    // ReactDOM.render(react元素、挂载的节点、回调函数)
+    // ReactDOM.render(vdom, document.getElementById("app"))
+
+    let p1 =  React.createElement('p',{key:1},'我是第一段话的内容！')
+    let p2 = React.createElement('p', {key:2},'我是话的内容')
+    let h3 = React.createElement('h3',{className:'title',key:3},'中原一点红！')
+    let div = React.createElement('div',{id:'box'},[h3,p1,p2])
+
+   
+    ReactDOM.render(div,document.getElementById("app"))
+
+// Each child in a list should have a unique "key" prop.
+// 如果某个React元素的子元素是数组，那么数组里面的每个react元素都要有一个唯一的key属性！
+
+</script>
+</html>

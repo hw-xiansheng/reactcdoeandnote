@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02、JSX使用</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script type="text/babel">
+// 一定要修改type为babel!!!
+    // JSX 本质就是做了React.createElement!!! 就是他的语法糖！
+
+    let vdom =  (<div id="box">
+                    <h3 className="title">中原一点红！</h3>
+                    <p>我是第一段话的内容！</p>
+                    <p>我是话的内容!</p>
+                </div>)
+    ReactDOM.render(vdom,document.getElementById("app"))    
+
+
+</script>
+</html>

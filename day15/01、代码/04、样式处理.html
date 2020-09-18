@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04、样式处理</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+    <style>
+        *{
+            padding: 40px;
+        }
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+    </div>
+</body>
+<script type="text/babel">
+    let c1 = 'red'
+
+    let stylename = { 
+        border: "2px solid green", 
+        color: "#fff", 
+        lineHeight: "40px", 
+        backgroundColor: "orange" 
+    }
+
+    let vdom = (<div className='box'>
+                    <h3 className={c1}>111</h3>
+                    <h3 className={10>20 ? 'red':'blue'}>111</h3>
+                    {/*不能直接写样式描述字符串，不能够解析！*/}
+                    {/*<h3 style="border:2px solid blue;color:orange">111</h3>*/}
+                    {/* style只能接收一个样式描述对象！！！ */}
+                    <h3 style={{border:"2px solid blue",color:"orange",lineHeight:"50px",backgroundColor:"#eee"}}>111</h3>
+                     <h3 style={stylename}>111</h3>
+                </div>)
+
+    ReactDOM.render(vdom, document.getElementById("app"))
+
+// 处理样式！
+    // 处理style   style={{样式属性名1:样式属性值1,样式属性名2:样式属性值2}}   //注意驼峰命名法！
+    // 处理class   属性绑定！
+
+</script>
+
+</html>

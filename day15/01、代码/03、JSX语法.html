@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03、JSX语法</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+</head>
+<body>
+    <div id="app">
+       
+    </div>
+</body>
+<script type="text/babel">
+    let msg = '你好React！'
+    let person = {
+        name:"张飞",
+        age:20
+    }
+    let mytpl = (<div className="tpl">
+                    <h3>我是故事！！</h3>
+                </div>)
+    function sayName(name){
+        return `我的名字是${name}`
+    }  
+    let nums =1000;  
+    let arr1 = ['小刘','小张','小强','小红','翠花','铁蛋','狗剩']
+    let arr2 = [<b key='1'>我是加粗</b>, <i key='2'>我是斜体</i>, <u key='3'>我是下划线</u>]        
+    let imgurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1600405521930&di=64cc268cce68facb3e5f357f5224b8f5&imgtype=0&src=http%3A%2F%2Faliyunimg.9ku.com%2Fpic%2Ftoutiao%2F20180803%2Ff26db75f65a134e844dba3039ea30310.jpeg%3Fx-oss-process%3Dimage%2Fresize%2Cw_600%2Cq_60"
+    let articleContent = "<div>我是div，<h3>我是h3</h3></div>"
+
+    let vdom =  (<div className="box">
+                    <h3>{msg}</h3>
+                    <p>{1+1}</p>
+                    <p>{true}</p>
+                    <p>{10>20 ? '111':'222' }</p>
+                    {/* 不能直接输出对象！ */}
+                    {/* <p>{person}</p>*/}
+                    {mytpl}
+                    {sayName('哈哈')}===========
+                    {nums}
+                    <hr/>
+                    {arr1}
+                    <hr/>
+                    {arr2}
+                    <img src={imgurl}  />
+                    <h3 id={'box'+nums}>我是id值为box1000的h3</h3>
+                    <label htmlFor=""></label>
+                    <table border="1" width="500" cellSpacing="0" cellPadding="0">
+                        <tbody>
+                            <tr>
+                                <td colSpan="2">2</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
+                    <div dangerouslySetInnerHTML={{__html:articleContent}}></div>
+                </div>)
+
+    ReactDOM.render(vdom,document.getElementById("app"))
+
+//1.渲染变量： {变量/表达式} 
+        // 不能输入布尔值！
+        // 条件判断可以，只是不能输出布尔值！
+        // 对象不能直接输出！
+//2.注释语法： {/* 注释内容 */}
+//3.标签一定要闭合，特别注意单标签！ br,hr,img,input
+//4.属性绑定 
+        // <标签 属性名={变量/表达式} />
+//5.属性注意
+        // class 要换成className
+        // label的for换成htmlFor
+        // 多个单词组成的属性，要变成驼峰命名！ 如果 colspan,rowspan,onclick,等等！
+//6.标签的嵌套要遵循规则！
+//7.数组的渲染，如果数组的元素都是字符串，那么直接拿去渲染（放在一起，符号都没有）！如果数组的元素是react元素标签，也直接渲染！如果都是react元素标签，每个react元素标签要有key属性！ 
+//8.渲染HTML字符串：<标签 dangerouslySetInnerHTML={{__html:变量}}></标签>
+
+// Objects are not valid as a React child  对象不能是react的子元素！
+// Inline Babel script: Expected corresponding JSX closing tag for <hr>   标签一定要闭合！无论单双！
+
+</script>
+</html>

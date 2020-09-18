@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06、列表渲染</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+         <!-- <div class="list">
+             <ul>
+                <li>
+                     <h3>姓名：xxx</h3>
+                     <p><b>性别：xxx</b><i>年龄：xx</i></p>
+                     <ol>
+                         <li>学科：xxx==>分数：xxx</li>
+                     </ol>
+                </li>
+             </ul>
+         </div> -->
+    </div>
+</body>
+<script type="text/babel">
+
+    let userdata = [
+        {
+            name:"铁蛋",
+            age:20,
+            sex:1,
+            score:[
+                {type:"语文",num:90},
+                {type:"数学",num:100},
+                { type: "英语", num: 60 }
+            ]
+        },
+        {
+            name: "翠花",
+            age: 19,
+            sex: 2,
+            score: [
+                { type: "语文", num: 10 },
+                { type: "数学", num: 10 },
+                { type: "英语", num: 90 }
+            ]
+        },
+        {
+            name: "二狗子",
+            age: 30,
+            sex: 1,
+            score: [
+                { type: "语文", num: 80 },
+                { type: "数学", num: 30 },
+                { type: "英语", num: 60 }
+            ]
+        },
+        {
+            name: "狗剩儿",
+            age: 25,
+            sex: 1,
+            score: [
+                { type: "语文", num: 70 },
+                { type: "数学", num: 30 },
+                { type: "英语", num: 20 }
+            ]
+        }
+    ]
+
+    // let listvdom = [<li><h3>姓名：111</h3> <p><b>性别：22</b><i>年龄：33</i></p></li>,<li><h3>姓名：111</h3> <p><b>性别：22</b><i>年龄：33</i></p></li>,<li><h3>姓名：111</h3> <p><b>性别：22</b><i>年龄：33</i></p></li>]
+    let listvdom = userdata.map((val,idx)=>{
+        return (<li key={idx}>
+                    <h3>姓名：{val.name}</h3>
+                    <p><b>性别：{val.sex == 1 ? '男' : '女'}</b><i>年龄：{val.age}</i></p>
+                    <ol>
+                        {val.score.map((v,i)=>{
+                            return <li key={i}>学科：{v.type}==&gt;分数：{v.num}</li>
+                        })}
+                    </ol>
+                </li>)
+    })
+
+    let vdom = (<div className="list">
+                    <ul>
+                        {listvdom}
+                    </ul>
+                    <hr/>
+                    <ul>
+                        {userdata.map((val, idx) => {
+                            return (<li key={idx}>
+                                <h3>姓名：{val.name}</h3>
+                                <p><b>性别：{val.sex == 1 ? '男' : '女'}</b><i>年龄：{val.age}</i></p>
+                                <ol>
+                                    {val.score.map((v, i) => {
+                                        return <li key={i}>学科：{v.type}==&gt;分数：{v.num}</li>
+                                    })}
+                                </ol>
+                            </li>)
+                        })}
+                    </ul>
+                </div>)    
+
+
+    ReactDOM.render(vdom, document.getElementById("app"))
+
+
+</script>
+
+</html>

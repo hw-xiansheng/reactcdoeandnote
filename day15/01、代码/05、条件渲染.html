@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05、条件渲染</title>
+    <!--1、 引入react -->
+    <script src="./js/react.development.js"></script>
+    <!--2、 引入react-dom -->
+    <script src="./js/react-dom.development.js"></script>
+    <!--3、引入babel  -->
+    <script src="./js/babel.min.js"></script>
+    <style>
+        body{
+            padding: 20px;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div class="list">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+            <p>暂无数据！</p>
+        </div> -->
+    </div>
+</body>
+<script type="text/babel">
+
+
+    let tpl1 = (<ul>
+                    <li>111</li>
+                    <li>222</li>
+                    <li>333</li>
+                </ul>)
+    let tpl2 = (<p>暂无数据！</p>);
+    
+    let state = true;
+    
+
+    let vdom = (<div className="list">
+                    {state ? tpl1 : tpl2 }
+                    <hr/>
+                    { state ? 
+                        <ul>
+                            <li>111</li>
+                            <li>222</li>
+                            <li>333</li>
+                        </ul>
+                        :
+                        <p>暂无数据！</p>
+                    }
+                    <hr/>
+                    <h3>模拟v-show</h3>
+                    <ul className={!state ? 'hide':''}>
+                        <li>111</li>
+                        <li>222</li>
+                        <li>333</li>
+                    </ul>
+                    <p className={state ? 'hide' : ''}>暂无数据！</p>
+                    
+                </div>)
+
+    ReactDOM.render(vdom, document.getElementById("app"))
+
+
+</script>
+
+</html>
