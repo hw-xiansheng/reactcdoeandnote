@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class News extends Component {
     render() {
@@ -17,4 +17,4 @@ class News extends Component {
     }
 }
 
-export default News;
+export default withRouter(News);

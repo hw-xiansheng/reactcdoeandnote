@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch, withRouter } from 'react-router-dom';
+
+import { createHashHistory } from "history"
 
 import UserIndex from "./UserIndex"
 import UserClass from "./UserClass"
 import UserOrder from "./UserOrder"
 import UserInfo from "./UserInfo"
 
+let history = createHashHistory();
+
 class User extends Component {
+    quit=()=>{
+        // this.props.history.push('/')
+        history.push('/')
+    }
     render() {
         return (
             <div className="main">
@@ -19,7 +27,7 @@ class User extends Component {
                 </div>
                 <div className="box">
                     <div>
-                        <div>欢迎您:<button >退出</button></div>
+                        <div>欢迎您:<button onClick={this.quit}>退出</button></div>
                         <hr/>
                         {/* 主体内容 */}
                         <Switch>
@@ -39,4 +47,4 @@ class User extends Component {
     // 嵌套路由的配置是写在对应的嵌套页面组件里面，而不是顶级！
     // 嵌套路由的上级路由不能是严格模式！
 
-export default User;
+export default withRouter(User);

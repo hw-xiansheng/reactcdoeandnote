@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class UserInfo extends Component {
+class Login extends Component {
     render() {
         return (
             <div>
-                我是用户资料
+                我是登录页面
             </div>
         );
     }
 }
 
-export default UserInfo;
+export default Login;

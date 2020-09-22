@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class UserClass extends Component {
+class Top extends Component {
     render() {
         return (
             <div>
-                我是课程!
+                顶部栏
             </div>
         );
     }
 }
 
-export default UserClass;
+export default Top;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class About extends Component {
+class Menu extends Component {
     render() {
         return (
             <div>
-                关于我们
+                菜单管理
             </div>
         );
     }
 }
 
-export default About;
+export default Menu;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class UserIndex extends Component {
+class Loading extends Component {
     render() {
         return (
             <div>
-                我是用户首页啊啊啊啊啊啊！
+                <h1>加载中...</h1>
             </div>
         );
     }
 }
 
-export default UserIndex;
+export default Loading;

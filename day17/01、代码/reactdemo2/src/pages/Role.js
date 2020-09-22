@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class UserOrder extends Component {
+class Role extends Component {
     render() {
         return (
             <div>
-                我是订单
+                角色管理
             </div>
         );
     }
 }
 
-export default UserOrder;
+export default Role;

@@ -1,4 +1,5 @@
 import React, { Component,Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Info extends Component {
     render() {
@@ -20,6 +21,6 @@ class Info extends Component {
     }
 }
 
-export default Info;
+export default withRouter(Info);
 
 
