@@ -1,0 +1,44 @@
+.app{
+    width: 1200px;
+    margin: 0 auto;
+    border:2px solid blue;
+}
+.child{
+    width: 600px;
+    padding:30px;
+    margin: 20px auto;
+    border:2px solid blue;
+}
+.main{
+    width: 800px;
+    display: flex;
+    margin:  20px auto;
+}
+.one,.two{
+    flex: 1;
+    height: 300px;
+    color: #fff;
+}
+.one{
+    background-color: orange;
+}
+.two{
+    background-color: green;
+}
+.alert{
+    background-color: #fff;
+    width: 300px;
+    border:2px solid blue;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.3);
+}
+.title{
+    background-color: #eee;
+    line-height: 40px;
+}
+.content{
+    padding: 40px 20px;
+}
+.bot{
+    line-height: 40px;
+    text-align: center;
+}
